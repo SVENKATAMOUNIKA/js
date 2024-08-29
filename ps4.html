@@ -8,7 +8,35 @@
 <body>
     <script>
         // 1) WAP to print the non fib numbers by using while loop
-        
+        num=+prompt("enter a number:")
+a=0,b=1,nonfib=0
+while(nonfib!=num){
+    for(i=a+1;i<b;i++){
+        console.log(i)
+        nonfib++
+        if(nonfib==num)
+        break
+    }
+    c=a+b
+    a=b
+    b=c
+}
+
+// 2) WAP to print nth non-fib number.
+num=+prompt("enter a number:")
+a=0,b=1,nonfib=0
+while(nonfib!=num){
+    for(i=a+1;i<b;i++){
+        console.log(i)
+        nonfib++
+        if(nonfib==num)
+        break
+    }
+    c=a+b
+    a=b
+    b=c
+}
+
     </script>
 </body>
 </html>

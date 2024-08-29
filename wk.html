@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <section class="bg-darkbg pt-32 pb-16 alignfull">
+        <div class="container mx-auto flex justify-between">
+            <div class="relative">
+                <i class="fa fa-search text-white absolute left-4 top-4"></i>
+                <input type="text"
+                name="search"
+                id="search"
+                class="bg-dark text-white py-3 pl-12 pr-28 rounded-md"
+                placeholder="search for a mobile...."/>
+                </div>
+            <div class="relative">
+                <select name="mobiles"
+                id="mobiles"
+                class="text-white bg-dark py-3 pr-16 rounded-md apperance-none">
+            <option value=""disabled selected>filter by mobiles</option>
+            <option value="realme">Realme</option>
+            <option value="iphone">Iphone</option>
+            <option value="redmi">Redmi</option>
+             <option value="vivo">Vivo</option>
+            <option value="samsung">Samsung</option>
+            <option value="galaxy">Galaxy</option>
+        </select>
+            <i class="fa-solid fa-chevron-down text-white absolute right-4 top-4"></i>
+            <img src="../tt.html"/>
+            <img src="../tt1.html"/>
+            </div>
+            </div>
+    </section>
+    <script>
+        const mobiles=["realme","iphone","redmi","vivo","samsung","galaxy"];
+        let searchMobiles;
+        const textInput=document.getElementById("search");
+        let timeout=null;
+        textInput.onekeyup=function(){
+            cleartimeOut=(timeout);
+            timeout=setTimeout(function(){
+                searchMobiles=textInput.value;
+                console.log("search mobiles=",searchMobiles);
+                const result=realme.includes(searchMobiles);
+                if(result){
+                    console.log("found");
+                }else{
+                    console.log("not found");
+                }
+            },500);
+        };
+    </script>
+</body>
+</html>
