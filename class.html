@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form onsubmit="demo()">
+        <!-- <input type="text" id="ip1">
+        <input type="text" id="ip2">
+        <input type="submit"> -->
+        <input type="text">
+        <input type="submit">
+    </form>
+    <p id="p1"></p>
+    <script>
+        // let form=document.getElementsByTagName("form");
+        // form[0].addEventListener("submit",(event)=>{
+        //     event.preventDefault();
+        //     let p=document.getElementsByTagName("p");
+        //     p[0].innerHTML="form submitted"
+        // });
+        // let form=document.getElementById("myform1");
+        // form.addEventListener("submit",(e)=>{
+        //     console.log(e)
+        //     e.preventDefault();
+        //     let ip1=document.getElementById("ip1");
+        //     let ip2=document.getElementById("ip2");
+        //    let result=ip1.value+ip2.value;
+        //     let p=document.getElementsById("p");
+        //     p[0].innerHTML=result;
+        // });
+        let form=document.getElementsByTagName("form");
+        form[0].addEventListener("submit",(e)=>{
+            e.preventDefault();
+           let ip1=document.getElementsByTagName("ip1");
+           let num=ip1[0].value;
+           let p=document.getElementById("p1");
+           if(num%2==0){
+            p.innerHTML=`${num} is even`;
+           }else{
+            p.innerHTML=`${num} is odd`;
+           }
+        });
+    </script>
+</body>
+</html>
