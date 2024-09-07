@@ -25,26 +25,40 @@ const day=date.getDate();
 const year=date.getFullYear();
 const formattedMonth=month.toString().padStart(2,'0');
 const formattedDay=day.toString().padStart(2,'0');
-const formattedDte=`${formattedMonth}/${formattedMonth}/${year}`;
+const formattedDate=`${formattedMonth}/${formattedMonth}/${year}`;
 console.log(formattedDate);
 
-// // Create a Date object for the given date
-// const date = new Date('2024-09-01'); // Example date: September 1, 2024
+// Task 3: Format Date as MM/DD/YYYY
+// - Input: Date string (e.g., "2024-08-28")
+// - Output: Formatted date string (e.g., "08/28/2024")
+function formatDate(dateString){
+    const[year,month,day]=dateString.split('-').map(Number);
+    const formattedDate=`${month.toString().padStart(2, '0')}/${day.toString().padStart(2,'0')}/${year}`;
+    return formattedDate;
+}
+const inputDate="2024-08-28";
+const formattedDate1=formatDate(inputDate);
+console.log(formattedDate1);
 
-// // Get the month (0-based index, so January is 0 and December is 11)
-// const month = date.getMonth() + 1; // Adding 1 to get the 1-based month
 
-// // Get the day of the month
-// const day = date.getDate();
 
-// // Get the full year
-// const year = date.getFullYear();
+// Task 4: Get Number of Days Between Dates
 
-// // Format month and day with leading zeros if needed
-// const formattedMonth = month.toString().padStart(2, '0');
-// const formattedDay = day.toString().padStart(2, '0');
+// - Input: Two date strings (e.g., "2024-08-28", "2024-09-01")
+// - Output: Number of days between dates (e.g., 4)
 
-// // Construct the formatted date string
-// const formattedDate = `${formattedMonth}/${formattedDay}/${year}`;
+function getNumberOfDaysBetweenDates(dateStr1,dateStr2){
+    const date1=new Date(dateStr1);
+    const date2=new Date(dateStr2);
+    const differenceInMilliseconds=Math.abs(date1-date2);
+    const millisecondsPerDay=24*60*60*1000;
+    const differenceInDays=Math.floor(differenceInMilliseconds/millisecondsPerDay);
+    return differenceInDays;
+}
+const date1="2024-08-28";
+const date2="2024-09-01";
+const daysBetween=getNumberOfDaysBetweenDates(date1,date2);
+console.log(daysBetween);
 
-// console.log(formattedDate); // Output: 09/01/2024
+
+
