@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Card</title>
+    <link rel="stylesheet" href="formidstyle.css">
+</head>
+<body>
+    <div class="back">
+    <form>
+        <h3>Please fill in the form</h3>
+        <label>Full Name</label>
+        <input type="text" id="" placeholder="">
+        <label>DOB</label>
+        <input type="text" id="inBirth" placeholder="birth">
+        <label>Field</label>
+        <input type="text" id="inYear" placeholder="year">
+        <label>Phoneno:</label>
+        <input type="number" id="innum" placeholder="phno">
+        <label for="file" class="upload">Upload an image</label>
+        <br>
+        <span>Choose one that Describes that you perfectly</span>
+        <input type="file" id="file" accept="image/*" onchange="loadImage(event)">
+    </form>
+    <button type="submit" id="preview">Preview</button>
+
+    <div class="container">
+        <div class="card" id="result">
+            <header id="head">
+                <div class="camp">
+                    <h4>Campus Card</h4>
+                    <span>Undergraduate</span>
+           </div>
+    <img src="./klu.jpg" id="logo" alt="">
+</header>
+<div class="content">
+    <img src="" id="imgdisplayed">
+    <ul>
+        <li id="name"></li>
+        <li id="birth"></li>
+        <li id="field"></li>
+        <li id="Phoneno"></li>
+    </ul>
+    <button id="down">Download</button>
+</div>
+</body>
+</html>

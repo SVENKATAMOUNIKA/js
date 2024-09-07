@@ -233,9 +233,15 @@
 
 
 // 5.Search and Filter: Find all products with "waterproof" in the description and filter them by price greater than $20
-let products=[
-
+let products1=[
+ 
 ];
+let filteredProducts=products1.filter(product=>
+  product.description.toLowerCase().includes('waterproof')&&product.price>20
+);
+console.log(filteredProducts);
+
+
 
 
 
