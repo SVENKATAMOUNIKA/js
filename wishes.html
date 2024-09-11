@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ganesh Chaturthi Wishes UI</title>
+    <style>
+        body {
+            font-family: 'Garamond', serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #e8f4f8;
+            margin: 0;
+            background-size: cover;
+        }
+        .wishes-card {
+            width: 500px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+        .wishes-card h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #d9534f;
+        }
+        .wishes-card p {
+            font-size: 20px;
+            color: #5a5a5a;
+        }
+        .wishes-card img {
+            width: 350px;
+            height: 350px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        const wishesCard = document.createElement('div');
+        wishesCard.className = 'wishes-card';
+        const ganeshImg = document.createElement('img');
+        ganeshImg.src = 'ganeshimage1.jpeg'; 
+        ganeshImg.alt = 'Lord Ganesha';
+        const greeting = document.createElement('h1');
+        greeting.textContent = 'Wishing You a Joyous Ganesh Chaturthi!';
+        const message = document.createElement('p');
+        message.textContent = 'May Lord Ganesha shower you with success and happiness in all your endeavors.';
+        wishesCard.appendChild(ganeshImg);
+        wishesCard.appendChild(greeting);
+        wishesCard.appendChild(message);
+        document.body.appendChild(wishesCard);
+    </script>
+</body>
+</html>
