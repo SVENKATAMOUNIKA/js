@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>College Admission Form</h1>
+    <form id="admissionform">
+      <div>
+        <label for="rollNumber">Roll Number:</label>
+        <input type="text" id="rollnumber" name="rollnumber">
+        <span class="error" id="rollNumberError"></span><br>
+      </div>
+
+      <div>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username">
+        <span class="error" id="usernameError"></span>
+      </div>
+
+      <div>
+        <label for="mobileNumber">Mobile Number:</label>
+        <input type="text" id="mobileNumber" name="mobileNumber">
+        <span class="error" id="mobileNumberError"></span>
+      </div>
+
+      <div>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password">
+        <span class="error" id="passwordError"></span>
+        <button type="submit">Submit</button>
+      </div>
+    </form>
+    <script>
+      const rollNumberPattern=/^\d{2}[a-zA-Z]\d{2}[A-Z]{3$}/;
+      const usernamePattern=/^[A-Za-z]+$/;
+      const mobileNumberPattern=/^\d{10}$/;
+      const passwordPattern=/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
+      document.getElementById('admissionForm').addEventListener('submit',function(event){
+        document.getElementById('rollNumberError').textContent='';
+        document.getElementById('usernameError').textContent='';
+        document.getElementById('mobileNumberError').textContent='';
+        document.getElementById('passwordError').textContent='';
+
+        let isValid=true;
+        const rollNumber=document.getElementById('rollNumber').value;
+        if(!rollNumberPattern.test(rollNumber)){
+          document.getElementById('rollNumberError').textContent='Invalid roll number format.';
+          isValid=false;
+        }
+
+        const username=document.getElementById('username').value;
+        if(!usernamePattern.test(username)){
+          document.getElementById('usernameError').textContent='username must contain only';
+          isValid=false;
+        }
+
+        const mobileNumber=document.getElementById('mobileNumber').value;
+        if(!mobileNumberPattern.test(mobileNumber)){
+          document.getElementById('mobileNumberError').textContent="Mobile number must contain exactly 10 numbers.";
+          isValid=false;
+        }
+
+        const password=document.getElementById('password').value;
+        if(!passwordPattern.tset(password)){
+          document.getElementById('passwordError').textContent="Password must contain 8 characters long and include one uppercase letter,one lower case,one digit,and one special character.";
+          isValid=false;
+        }
+
+        if(!isValid){
+          event.preventDefault();
+        }
+      });
+    </script>
+  </body>
+</html>
