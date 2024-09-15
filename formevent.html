@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            width: 80%;
+            max-width: 600px;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .id-card {
+            display: none;
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            padding: 15px;
+            background: #fff;
+        }
+        .id-card img {
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+        .id-card .card-content {
+            display: flex;
+            align-items: center;
+        }
+        .id-card .card-content div {
+            flex: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>ID CARD GENERATOR</h1>
+    <div id="formcontainer">
+        <form id="idform">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required><br>
+        </div>
+        <div class="form-group">
+            <label for="rollNumber">ID Number:</label>
+            <input type="text" id="idNumber" name="idnumber" required><br>
+            </div>
+         
+            <div class="form-group">
+            <label for="mobileNumber">Position:</label>
+            <input type="text" id="position" name="position" required><br>
+            </div>
+
+        <div class="form-group">
+            <label for="password">Photo URL:</label>
+            <input type="password" id="photoUrl" name="photoUrl" required><br>
+            </div>
+
+            <button type="button" onclick="generateIdCard()">Generate ID Card</button>
+        </form>
+
+<div class="id-card" id="idcard">
+    <div class="card-content">
+        <img id="photo" src="" alt="photo" width="100" height="100">
+    </div>
+    <h3 id="cardName"></h3>
+    <p><strong>ID Number:</strong><span id="cardIdNumber"></span></p>
+    <p><strong>Position:</strong><span id="cardPosition"></span></p>
+</div>
+</div>
+</div>
+</div>
+<script>
+    function generateIdCard(){
+        const name=document.getElementById('name').value;
+        const idNumber=document.getElementById('idNumber').value;
+        const position=document.getElementById('Position').value;
+        const photourl=document.getElementById('photourl').value;
+
+        document.getElementById('cardName').textContent=name;
+        document.getElementById('cardIdNumber').textContent=idNumber;
+        document.getElementById('cardPosition').textContent=position;
+        document.getElementById('photo').src=photourl;
+
+        document.getElementById('idCard').style.display='block'
+
+    }
+</script>
+
+</body>
+</html>
