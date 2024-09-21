@@ -4,35 +4,62 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <style>
+      .container{
+        border: 2px solid;
+        height: 25vh;
+        width: 20vw;
+       padding: 50px;
+       gap: 10px;
+        text-align: center;
+        flex-wrap: nowrap;
+        background-color: aqua;
+      }
+      #admission Form{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        gap: 10px;
+        width: 30vw;
+        padding: 20px;
+      }
+    </style>
   </head>
   <body>
+    <center>
     <h1>College Admission Form</h1>
     <form id="admissionform">
+      <div class="container">
       <div>
         <label for="rollNumber">Roll Number:</label>
         <input type="text" id="rollnumber" name="rollnumber">
-        <span class="error" id="rollNumberError"></span><br>
+        <span class="error" id="rollNumberError"></span><br><br>
       </div>
 
       <div>
         <label for="username">Username:</label>
         <input type="text" id="username" name="username">
-        <span class="error" id="usernameError"></span><br>
+        <span class="error" id="usernameError"></span><br><br>
       </div>
 
       <div>
         <label for="mobileNumber">Mobile Number:</label>
         <input type="text" id="mobileNumber" name="mobileNumber">
-        <span class="error" id="mobileNumberError"></span><br>
+        <span class="error" id="mobileNumberError"></span><br><br>
       </div>
 
       <div>
         <label for="password">Password:</label>
         <input type="password" id="password" name="password">
-        <span class="error" id="passwordError"></span><br>
+        <span class="error" id="passwordError"></span><br><br>
+        <pre></pre>
         <button type="submit">Submit</button>
       </div>
+    </div>
     </form>
+    </center>
     <script>
       const rollNumberPattern=/^\d{2}[a-zA-Z]\d{2}[A-Z]{3$}/;
       const usernamePattern=/^[A-Za-z]+$/;
