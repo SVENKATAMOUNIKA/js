@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
         *{
@@ -10,10 +10,26 @@
             margin: 0;
             box-sizing: border-box;
         }
+        #ii{
+            width: 90vw;
+            display: flex;;
+            justify-content: center;
+        }
+        button{
+            padding: 10px 30px;
+            border-radius: 50px;
+            background-color: black;
+            border: none;
+            color: #ffff;
+            margin-bottom: 20px;
+            font-size: 20px;
+            margin-top: 20px;
+        }
     </style>
-</head>
-<body>
-    <div id="ii"><button id="bt">Click Me</button></div>
+  </head>
+  <body>
+   <div id="ii"> <button id="bt">Click Me</button></div>
+  
     <script>
         let ob = [
         {
@@ -223,29 +239,57 @@
     rating: { rate: 3.6, count: 145 },
   },
       ];
-      let btn=document.getElementById("bt");
-      let mm=document.createElement("div");
-      document.body.appendChild(mm);
-      mm.style.display="flex";
-      mm.style.flexWrap="wrap";
-      mm.style.gap="10px";
-      mm.style.justifyContent="center"
 
-      count=0;
-      btn.addEventListener("click",()=>{
-        let
-        div=document.createElement("div");
-        mm.appendChild(div);
-        div.style.height="400px";
-        div.style.border="2px solid";
-        div.style.borderRadius="40px";
-        div.style.width="350px";
-        div.style.padding="20px";
-        div.style.backgroundColor="#ffff";
-        div.style.boxShadow="2px 2px 10px"
-        
-      })
+        let btn=document.getElementById("bt");
+        let mm=document.createElement("div");
+        document.body.appendChild(mm);
+        mm.style.display="flex";
+        mm.style.flexWrap="wrap";
+        mm.style.gap="10px";
+        mm.style.justifyContent="center"
+
+        count=0;
+        btn.addEventListener("click",()=>{
+            let div=document.createElement("div");
+            mm.appendChild(div);
+            div.style.height="400px";
+            div.style.border="2px solid ";
+            div.style.borderRadius="40px"
+            div.style.width="350px";
+            div.style.padding="20px";
+            div.style.backgroundColor="#ffff";
+            div.style.boxShadow="2px 2px 10px"
+
+            let im=document.createElement("img");
+            div.appendChild(im);
+            im.setAttribute("src",ob[count].image);
+            im.style.width="90%";
+            im.style.height="50%";
+
+            let p1=document.createElement("p");
+            div.appendChild(p1);
+            p1.innerHTML="<b>Title : </b>"+ob[count].title;
+            p1.style.fontSize="13px";
+            p1.style.padding="5px";
+            p1.style.color="blue"
+
+            let p2=document.createElement("p");    
+            div.appendChild(p2);
+            p2.innerHTML="<b>Price : </b>"+ob[count].price;
+            p2.style.fontSize="13px";
+            p2.style.padding="5px";
+
+            let p3=document.createElement("p");
+            div.appendChild(p3);
+            p3.innerHTML="<b>Description : </b>"+ob[count].description;
+            p3.style.fontSize="11.5px";
+            p3.style.padding="5px";
+            count++;
+            if(count>19){
+            return alert("No More Products available")
+            }
+        })
+     
     </script>
-    
-</body>
+  </body>
 </html>
