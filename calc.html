@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+}
+
+.calculator {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+#display {
+    width: 100%;
+    height: 40px;
+    margin-bottom: 10px;
+    text-align: right;
+    font-size: 1.5em;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.btn {
+    padding: 20px;
+    font-size: 1.5em;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+.operator {
+    background-color: #28a745;
+}
+
+.operator:hover {
+    background-color: #218838;
+}
+</style>
+<body>
+    <div class="calculator">
+        <input type="text" id="display" disabled>
+        <div class="buttons">
+            <button class="btn" data-value="7">7</button>
+            <button class="btn" data-value="8">8</button>
+            <button class="btn" data-value="9">9</button>
+            <button class="btn operator" data-value="/">/</button>
+            <button class="btn" data-value="4">4</button>
+            <button class="btn" data-value="5">5</button>
+            <button class="btn" data-value="6">6</button>
+            <button class="btn operator" data-value="*">*</button>
+            <button class="btn" data-value="1">1</button>
+            <button class="btn" data-value="2">2</button>
+            <button class="btn" data-value="3">3</button>
+            <button class="btn operator" data-value="-">-</button>
+            <button class="btn" data-value="0">0</button>
+            <button class="btn operator" data-value="+">+</button>
+            <button class="btn" id="equals">=</button>
+            <button class="btn" id="clear">C</button>
+        </div>
+    </div>
+    <script>
+        const display = document.getElementById('display');
+const buttons = document.querySelectorAll('.btn');
+const equalsButton = document.getElementById('equals');
+const clearButton = document.getElementById('clear');
+
+let currentInput = '';
+let operator = '';
+let firstOperand = '';
+
+buttons.forEach(button => {
+    button.addEventListener('click', () => {
+        const value = button.dataset.value;
+
+        if (['+', '-', '*', '/'].includes(value)) {
+            if (currentInput !== '') {
+                firstOperand = currentInput;
+                operator = value;
+                currentInput = '';
+            }
+        } else {
+            currentInput += value;
+        }
+
+        display.value = currentInput;
+    });
+});
+
+equalsButton.addEventListener('click', () => {
+    if (firstOperand !== '' && currentInput !== '') {
+        const secondOperand = currentInput;
+        const result = calculate(firstOperand, operator, secondOperand);
+        display.value = result;
+        currentInput = '';
+        firstOperand = '';
+        operator = '';
+    }
+});
+
+clearButton.addEventListener('click', () => {
+    currentInput = '';
+    firstOperand = '';
+    operator = '';
+    display.value = '';
+});
+
+function calculate(first, operator, second) {
+    const a = parseFloat(first);
+    const b = parseFloat(second);
+
+    switch (operator) {
+        case '+':
+            return a + b;
+        case '-':
+            return a - b;
+        case '*':
+            return a * b;
+        case '/':
+            return b !== 0 ? a / b : 'Error'; // Handle division by zero
+        default:
+            return '';
+    }
+}
+    </script>
+</body>
+</html>

@@ -3,30 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>OTP Generator</title>
     <style>
-        body{
-            font-family: arial, sans-serif;
-            text-align: center;
-            margin-top: 50px;
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f4f4f4;
         }
-        #otpDisplay{
+        #otpDisplay {
             font-size: 24px;
-            margin: 20px;
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 2px solid #007bff;
+            border-radius: 5px;
+            background-color: white;
         }
-        .btn{
+        button {
             padding: 10px 20px;
-            margin: 5px;
+            font-size: 16px;
             cursor: pointer;
-        }
-        .btn:hover{
-            background-color: #ddd;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
         }
     </style>
 </head>
 <body>
-<div id="otpDisplay">Your OTP will appear here</div>
-<button id="geneateBtn" class="btn">Generate OTP</button>
-<button id="copyBtn" class="btn" 
+
+    <div id="otpDisplay">Your OTP will appear here</div>
+    <button id="generateOtpBtn">Generate OTP</button>
+    <button id="copyOtpBtn">Copy OTP</button>
+
+    <script src="otpGenerator.js"></script>
 </body>
 </html>
