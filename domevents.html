@@ -12,33 +12,82 @@
             align-items: center;
             justify-content: center;
             height: 100vh;
-            background-color: #f4f4f4;
+            background-color: #f0f0f0;
         }
         #otpDisplay {
-            font-size: 24px;
+            font-size: 2em;
             margin-bottom: 20px;
-            padding: 10px;
-            border: 2px solid #007bff;
-            border-radius: 5px;
-            background-color: white;
         }
         button {
             padding: 10px 20px;
-            font-size: 16px;
+            font-size: 1em;
             cursor: pointer;
-            border: none;
-            border-radius: 5px;
-            background-color: #007bff;
-            color: white;
         }
     </style>
 </head>
 <body>
+    <div id="otpDisplay">Click the button to generate OTP</div>
+    <button id="generateOtpButton">Generate OTP</button>
+    <button id="copyOtpButton" style="display:none;">Copy OTP</button>
 
-    <div id="otpDisplay">Your OTP will appear here</div>
-    <button id="generateOtpBtn">Generate OTP</button>
-    <button id="copyOtpBtn">Copy OTP</button>
+    <script>
+        // otp.js
+document.addEventListener('DOMContentLoaded', () => {
+    const otpDisplay = document.getElementById('otpDisplay');
+    const generateOtpButton = document.getElementById('generateOtpButton');
+    const copyOtpButton = document.getElementById('copyOtpButton');
 
-    <script src="otpGenerator.js"></script>
+    let currentOtp = '';
+
+    // Function to generate a random OTP
+    function generateOTP(length = 6) {
+        let otp = '';
+        const characters = '0123456789';
+        for (let i = 0; i < length; i++) {
+            otp += characters.charAt(Math.floor(Math.random() * characters.length));
+        }
+        return otp;
+    }
+
+    // Function to update OTP display and manage button visibility
+    function updateOtpDisplay() {
+        currentOtp = generateOTP();
+        otpDisplay.textContent = currentOtp;
+        copyOtpButton.style.display = 'inline-block'; // Show copy button
+    }
+
+    // Mouse event listener for generating OTP
+    generateOtpButton.addEventListener('click', updateOtpDisplay);
+
+    // Mouse event listener for copying OTP to clipboard
+    copyOtpButton.addEventListener('click', () => {
+        navigator.clipboard.writeText(currentOtp)
+            .then(() => {
+                alert('OTP copied to clipboard!');
+            })
+            .catch(err => {
+                console.error('Could not copy text: ', err);
+            });
+    });
+
+    // Additional mouse events for button hover effects
+    generateOtpButton.addEventListener('mouseenter', () => {
+        generateOtpButton.style.backgroundColor = '#d0ffd0';
+    });
+
+    generateOtpButton.addEventListener('mouseleave', () => {
+        generateOtpButton.style.backgroundColor = '';
+    });
+
+    copyOtpButton.addEventListener('mouseenter', () => {
+        copyOtpButton.style.backgroundColor = '#d0d0ff';
+    });
+
+    copyOtpButton.addEventListener('mouseleave', () => {
+        copyOtpButton.style.backgroundColor = '';
+    });
+});
+
+    </script>
 </body>
 </html>
