@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Storage Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        input {
+            margin: 5px;
+            padding: 10px;
+            width: 200px;
+        }
+        button {
+            padding: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <form id="dataForm">
+        <input type="text" id="name" placeholder="Enter your name" required />
+        <input type="email" id="email" placeholder="Enter your email" required />
+        <button type="submit">Submit</button>
+    </form>
+    <div id="message"></div>
+
+    <script>
+      
+document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('dataForm');
+    const message = document.getElementById('message');
+
+   
+    function loadData() {
+        const localStorageData = JSON.parse(localStorage.getItem('userData'));
+        const sessionStorageData = JSON.parse(sessionStorage.getItem('userData'));
+
+        if (localStorageData) {
+            message.innerHTML += `<p>LocalStorage Data: Name: ${localStorageData.name}, Email: ${localStorageData.email}</p>`;
+        }
+        if (sessionStorageData) {
+            message.innerHTML += `<p>SessionStorage Data: Name: ${sessionStorageData.name}, Email: ${sessionStorageData.email}</p>`;
+        }
+    }
+
+    loadData();
+
+    form.addEventListener('submit', (event) => {
+        event.preventDefault(); 
+
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+
+        const userData = { name, email };
+        localStorage.setItem('userData', JSON.stringify(userData));
+        sessionStorage.setItem('userData', JSON.stringify(userData));
+        form.reset();
+        message.innerHTML = `<p>Data stored successfully!</p>`;
+    });
+});
+
+    </script>
+</body>
+</html>
