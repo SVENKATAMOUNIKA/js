@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Task 1: Resolve a Promise with a Value
+     const myPromise=new Promise((resolve,reject)=>{
+        resolve("Hello,World!");
+    });
+    myPromise.then(value=>{
+        console.log(value);
+    });
+
+
+
+    // Task 2: Reject a Promise with an Error
+ const rejectedPromise=Promise.reject(new Error("Something went wrong!"));
+rejectedPromise
+.then(value=>{
+    console.log(value);
+})
+.catch(error=>{
+    console.log(error.message)
+});
+
+
+
+
+// Task 3: Chain Promises
+const promise1=new Promise((resolve,reject)=>{
+  setTimeout(()=>resolve(1),1000);
+});
+promise1
+.then(result=>{
+  console.log(result)
+  return result+1;
+})
+.then(result=>{
+  console.log(result)
+  return result+1;
+})
+.then(result=>{
+  console.log(result)
+  return result+1;
+})
+.catch(error=>{
+  console.error('Error:error')
+});
+
+
+
+
+// Task-4:Handle Promise Rejection
+const promise2=new Promise((resolve, reject) => {
+  setTimeout(()=>reject(new Error('Something went wrong!')),1000);
+});
+Promise2
+.then(result=>{
+  console.log(result);
+  return result+1;
+})
+.catch(error=>{
+  console.error('Caught error:error.message');
+})
+.then(()=>{
+  console.log('Continuing after error handling')
+});
+
+    </script>
+</body>
+</html>
