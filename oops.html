@@ -6,6 +6,116 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <script>
+    // Create a simple inheritance hierarchy using JavaScript classes.
+
+// Requirements:
+
+// 1. Create a base class called Vehicle.
+// 2. Add properties: brand, model, year.
+// 3. Add methods: startEngine(), accelerate().
+// 4. Create two subclasses: Car and Truck.
+// 5. Inherit properties and methods from Vehicle.
+// 6. Add unique properties and methods to each subclass.
+
+class vehicle{
+    constructor(brand,model,year){
+       this.brand=brand;
+       this.model=model;
+       this.year=year;
+    }
+    startengine(){
+        console.log(`${this.brand}${this.model}'s engine started`);
+    }
+    accelerate(){
+        console.log(`{this.brand}${this.model} is accelerating`);
+    }
+}
+
+// subclass for car
+class Truck extends Vehicle {
+    constructor(brand, model, year, payloadCapacity) {
+        super(brand, model, year); // Call the parent constructor
+        this.payloadCapacity = payloadCapacity; // Unique property for Truck
+    }
+
+    tow() {
+        console.log(`${this.brand} ${this.model} is towing a load.`);
+    }
+}
+
+    const myCar = new Car('Toyota', 'Camry', 2021, 4);
+myCar.startEngine();
+myCar.accelerate();
+myCar.honk();
+
+const myTruck = new Truck('Ford', 'F-150', 2020, 1200);
+myTruck.startEngine();
+myTruck.accelerate();
+myTruck.tow();
+
+
+
+
+
+
+// 2.Create a class called BankAccount with private properties:
+
+// - balance
+// - accountNumber
+
+// And public methods:
+// - deposit(amount): adds amount to balance
+// - withdraw(amount): subtracts amount from balance
+// - getBalance(): returns balance
+class BankAccount{
+    constructor(accountNumber){
+        this._balance=0;
+        this._accountNumber=accountNumber;
+    }
+    deposit(amount){
+        if(amount>0){
+            this._balance+=amount;
+            console.log(`Deposited:$${amount}.New balance:$${this._balnce}`);
+            }else{
+                console.log('Deposit must be positive');
+            }
+    }
+
+
+    withdraw(amount){
+        if(amount>0&&amount<=this._balnce){
+            this._balance-=amount;
+            console.log(`Withdrew:$${amount}.New balance:$${this._balnce}`);
+        }else{
+            console.log('Insufficient balnce or invalid amount');
+        }
+    }
+
+
+    get Balance(){
+        return this._balance;
+    }
+}
+
+const myAccount=new BankAccount('123456789')
+myAccount.deposit(100);
+myAccount.withdraw(50);
+console.log(`Current balance:$${myAccount.getBalance()}`);
+
+// Create a class called MathHelper with a static method:
+
+// - addNumbers(a, b): returns the sum of a and b
+
+class MathHelper{
+    static addNumbers(a,b){
+        return a+b;
+    }
+}
+const sum=MathHelper.addNumbers(5,3);
+console.log(sum);
+
+
+</script>
 </body>
 </html>
