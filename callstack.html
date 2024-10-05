@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Player with Skip Ad Feature</title>
+    <style>
+        #skip-button {
+            display: none;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+        }
+        #video-container {
+            position: relative;
+            width: 640px;
+            height: 360px;
+        }
+    </style>
+</head>
+<body>
+    <div id="video-container">
+        <video id="video" width="640" height="360" controls>
+            <source src="your-ad-video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <button id="skip-button">Skip Ad</button>
+    </div>
+
+    <script>// script.js
+        document.addEventListener('DOMContentLoaded', function() {
+            const video = document.getElementById('video');
+            const skipButton = document.getElementById('skip-button');
+        
+            const adDuration = 15; // Duration of the ad in seconds
+            let adSkipped = false;
+        
+            // Show the skip button after a certain time
+            video.addEventListener('loadedmetadata', function() {
+                skipButton.style.display = 'none';
+        
+                // Show the skip button after 10 seconds of the ad
+                setTimeout(() => {
+                    if (!adSkipped) {
+                        skipButton.style.display = 'block';
+                    }
+                }, (adDuration - 5) * 1000); // Show 5 seconds before the ad ends
+            });
+        
+            // Skip button click handler
+            skipButton.addEventListener('click', function() {
+                adSkipped = true;
+                video.currentTime = adDuration; // Skip to the end of the ad
+                skipButton.style.display = 'none'; // Hide the button
+                video.play(); // Resume playback
+            });
+        
+            // Handle video end
+            video.addEventListener('ended', function() {
+                skipButton.style.display = 'none'; // Hide the button if the video ends
+            });
+        });
+        </script>
+</body>
+</html>
+
