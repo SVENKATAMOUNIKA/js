@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // GET REQUEST
+        fetch('https://api.example.com/data')
+        .then(response=>{
+            if(!response.ok){
+                throw new error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data=>{
+            console.log(data);
+        })
+        .catch(error=>{
+            console.error('There was a problem with the fetch operation:',error);
+        });
+   
+
+
+
+//    POST REQUEST
+fetch('https://api.example.com/data',{
+    method:'post'
+    headers:{
+        'Content-Type':'application/json'
+    },
+    body:JSON.stringify({key:value})
+})
+.then(response=>{
+    if(!response.ok){
+        throw new Error('Network response was not ok');
+    }
+    return response.json();
+})
+.then(data=>{
+    console.log(data);
+})
+.catch(error=>{
+    console.error('There was a problem with the fetch opeartion:',error);
+});
+
+
+// PUT REQUEST
+fetch('https://api.example.com/data/1',{
+    method:'PUT',
+    headers:{
+        'Content-Type':'application/json'
+    },
+    body:JSON.stringify({key:'new value'})
+})
+.then(response=>{
+    if(!response.ok){
+        throw new Error('Network response was not ok');
+    }
+    return response.json();
+})
+.then(data=>{
+    console.log(data);
+})
+.catch(error=>{
+    console.error('There was a problem with the fetch operation:',error);
+});
+
+
+
+
+// PATCH REQUEST
+fetch('https://api.example.com/data/1',{
+    method:'PATCH',
+    headers:{
+        'Content-Type':'application/json'
+    },
+    body:JSON.stringify({key:'updated value'})
+})
+.then(response=>response.json())
+.then(data=>console.log(data))
+.catch(error=>console.error('There was a problem with the fetch operation:',error));
+
+
+
+
+// DELETE request
+fetch('https://api.example.com/data/1',{
+    method:'DELETE'
+})
+.then(response=>{
+    if(!response.ok){
+        throw new Error('Network response was not ok');
+    }
+    return response.json();
+})
+.then(data=>console.log(data))
+.catch(error=>console.error('There was a problem with the fetch operation:',error))
+
+
+
+</script>
+</body>
+</html>
